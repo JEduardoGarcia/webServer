@@ -53,7 +53,7 @@ public class WebServer {
     private static final String HOME_PAGE_ENDPOINT = "/";
     private static final String HOME_PAGE_UI_ASSETS_BASE_DIR = "/ui_assets/";
     private static final String ENDPOINT_PROCESS = "/procesar_datos";
-    private static final String CENTRAL_SERVER_SEARCH_ENDPOINT = "http://34.46.188.171:8080/central/search?n=";
+    private static final String CENTRAL_SERVER_SEARCH_ENDPOINT = "http://10.128.0.43:8080/central/search?n=";
 
     private final int port;
     private HttpServer server;
