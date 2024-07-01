@@ -53,7 +53,7 @@ public class WebServer {
     private static final String HOME_PAGE_ENDPOINT = "/";
     private static final String HOME_PAGE_UI_ASSETS_BASE_DIR = "/ui_assets/";
     private static final String ENDPOINT_PROCESS = "/procesar_datos";
-    private static final String CENTRAL_SERVER_SEARCH_ENDPOINT = "http://10.128.0.43:8080/central/search?n=2";
+    private static final String CENTRAL_SERVER_SEARCH_ENDPOINT = "http://34.46.188.171:8080/central/search?n=";
 
     private final int port;
     private HttpServer server;
@@ -134,10 +134,12 @@ public class WebServer {
         try {
             FrontendSearchRequest frontendSearchRequest = objectMapper
                     .readValue(exchange.getRequestBody().readAllBytes(), FrontendSearchRequest.class);
-
+            // Valor de n para la búsqueda (n -> int)
+            String searchQuery = frontendSearchRequest.getSearchQuery();
+            int n = Integer.parseInt(searchQuery);
             // Realiza la solicitud al servidor central
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(CENTRAL_SERVER_SEARCH_ENDPOINT))
+                    .uri(URI.create(CENTRAL_SERVER_SEARCH_ENDPOINT + n))
                     .GET()
                     .build();
 
@@ -163,6 +165,7 @@ public class WebServer {
 
         Map<String, Object> status = new HashMap<>();
         status.put("cpuUsage", getCpuUsage());
+        status.put("cpuLoad", getCpuUsage());
         status.put("message", "El servidor está en línea y funcionando.");
         status.put("status", "online");
 

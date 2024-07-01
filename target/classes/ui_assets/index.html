@@ -1,27 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Ejemplo con Backend Java</title>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <meta charset="UTF-8">
+    <title>Proyecto 5/6</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="ui_assets/style.css">
     <script type="text/javascript" src="ui_assets/javascript.js"></script>
 </head>
-
 <body>
-<div id="layout">
-    <h1>Contador de palabras</h1>
-    <h3>Introduzca una frase:</h3>
-    <div>
-        <input type="text" id="search_text">
+<div class="container mt-5">
+    <h1 class="text-center">Visualizador de frases en textos</h1>
+    <h3 class="text-center">Introduzca un número n para buscar frases de esa cantidad de palabras y su aparición en distintos documentos:</h3>
+    <div class="input-group mb-3">
+        <input type="text" id="search_text" class="form-control" placeholder="Número n" aria-label="Número n" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="submit_button">Enviar</button>
+        </div>
     </div>
-    <br/>
-    <div>
-      <button id="submit_button">Enviar</button>
-    </div>
-    <div id="results">
-        <table>
-            <tbody>
-            </tbody>
+    <div id="results" class="mt-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th colspan="2">Tiempo de procesamiento: <span id="processing_time"></span> ms</th>
+                    <th style="text-align:right;">n = <span id="n_value"></span></th>
+                </tr>
+                <tr>
+                    <th>Frase</th>
+                    <th>Textos donde aparece</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
         </table>
     </div>
 </div>
