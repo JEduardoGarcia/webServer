@@ -169,7 +169,8 @@ public class WebServer {
         status.put("message", "El servidor está en línea y funcionando.");
         status.put("status", "online");
 
-        sendResponse(responseMessage.getBytes(), status, exchange);
+        byte[] responseBytes = objectMapper.writeValueAsBytes(status);
+        sendResponse(responseBytes, exchange);
     }
 
     // Método para obtener el uso de la CPU
